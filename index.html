@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>JUMPSCARE</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: black;
+      color: white;
+      overflow: hidden;
+      text-align: center;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+    }
+
+    h1 {
+      font-size: 50px;
+      text-shadow: 0 0 20px red;
+      animation: glow 1s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px red; }
+      to { text-shadow: 0 0 30px red; }
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      background: red;
+      color: white;
+      cursor: pointer;
+      border-radius: 10px;
+      transition: 0.2s;
+    }
+
+    button:hover {
+      background: darkred;
+      transform: scale(1.1);
+    }
+
+    /* Jumpscare */
+    #jumpscare {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      background: black;
+      z-index: 9999;
+    }
+
+    #jumpscare img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      animation: shake 0.1s infinite;
+    }
+
+    @keyframes shake {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(10px, -10px); }
+      50% { transform: translate(-10px, 10px); }
+      75% { transform: translate(10px, 10px); }
+      100% { transform: translate(-10px, -10px); }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1> TUNG TUNG SAHRUL </h1>
+    <p>Tekan tombol aja guys😈</p>
+    <button onclick="startJumpscare()">MULAI</button>
+  </div>
+
+  <div id="jumpscare">
+    <img src="https://img.sanishtech.com/u/6d81ffdc7348efce37c1448a29fa95a8.jpg" alt="Jumpscare">
+  </div>
+
+  <!-- suara jumpscare -->
+  <audio id="sound" src="AUD-20251024-WA0019.mp3"></audio>
+
+  <script>
+    function startJumpscare() {
+      alert("Siap-siap ya... 😈");
+
+      setTimeout(() => {
+        let jumpscare = document.getElementById("jumpscare");
+        let sound = document.getElementById("sound");
+
+        jumpscare.style.display = "flex";
+        sound.volume = 1.0;
+        sound.play();
+
+        // getar layar (HP)
+        if (navigator.vibrate) {
+          navigator.vibrate([300, 200, 300, 200, 500]);
+        }
+
+      }, 3000); // 3 detik sebelum jumpscare
+    }
+  </script>
+</body>
+                                         </html>
